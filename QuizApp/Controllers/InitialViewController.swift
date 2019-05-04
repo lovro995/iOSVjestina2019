@@ -24,12 +24,26 @@ class InitialViewController: UIViewController {
     var isTimmerRunning = false
     
     var filterWord = "NBA"
-   
+    
+    @IBAction func logOutAction(_ sender: Any) {
+        deleteUserData()
+        let vc = LoginViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    @IBOutlet weak var logOutBtn: UIButton!
+    
     @IBAction func grabQuizzesAction(_ sender: UIButton) {
         //showCantGrabQuizzesLabel();
         grabQuizzesBtn.isEnabled = false
         loadingBarIndicator.isHidden = false
         grabQuizzes()
+    }
+    
+    func deleteUserData(){
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(nil, forKey: "user_id")
+        userDefaults.set(nil, forKey: "token")
     }
     
     func grabQuizzes(){

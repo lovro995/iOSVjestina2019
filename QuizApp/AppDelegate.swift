@@ -18,7 +18,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let vc = InitialViewController()
+        //let vc = InitialViewController()
+        
+        let userDefaults = UserDefaults.standard
+        
+        let user_id = userDefaults.string(forKey: "user_id")
+        
+        var vc: UIViewController
+        
+        if(user_id == nil){
+            print("user is not logged in")
+            vc = LoginViewController()
+        } else{
+            print("user is logged in")
+            vc = InitialViewController()
+        }
+        
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
         

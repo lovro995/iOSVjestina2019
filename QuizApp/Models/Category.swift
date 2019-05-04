@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-enum Category {
+enum Category: String {
     case sport
     case science
     
@@ -21,7 +21,7 @@ enum Category {
             return UIColor.green
         }
     }
-    
+
     init?(categoryString : String){
         switch categoryString {
         case "SCIENCE":

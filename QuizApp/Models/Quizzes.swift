@@ -14,7 +14,7 @@ class Quizzes {
     // failable konstruktor koji prima json
     init?(json: Any) {
         print("-------------")
-        print(json)
+        //print(json)
         if let jsonDict = json as? [String: Any],
             let quizzesJSON = jsonDict["quizzes"] as? [Any] { // za kljuc "borders" dohvatimo
          

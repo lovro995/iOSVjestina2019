@@ -25,13 +25,13 @@ class InitialViewController: UIViewController {
     
     var filterWord = "NBA"
     
+    @IBOutlet weak var logOutBtn: UIButton!
+    
     @IBAction func logOutAction(_ sender: Any) {
         deleteUserData()
         let vc = LoginViewController()
         self.present(vc, animated: true, completion: nil)
     }
-    
-    @IBOutlet weak var logOutBtn: UIButton!
     
     @IBAction func grabQuizzesAction(_ sender: UIButton) {
         //showCantGrabQuizzesLabel();

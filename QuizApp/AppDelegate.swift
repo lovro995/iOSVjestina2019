@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc = LoginViewController()
         } else{
             print("user is logged in")
-            vc = InitialViewController()
+            vc = QuizzesListViewController()
         }
         
         window?.rootViewController = vc

@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
                     
                     self.saveUserData(userData : userData)
                     
-                    let vc = InitialViewController()
+                    let vc = QuizzesListViewController()
                     self.present(vc, animated: true, completion: nil)
                     
                 }else{

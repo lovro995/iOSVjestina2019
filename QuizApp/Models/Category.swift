@@ -10,12 +10,12 @@ import UIKit
 import Foundation
 
 enum Category: String {
-    case sport
+    case sports
     case science
     
     var color: UIColor {
         switch self {
-        case .sport:
+        case .sports:
             return UIColor.blue
         case .science:
             return UIColor.green
@@ -27,7 +27,7 @@ enum Category: String {
         case "SCIENCE":
             self = .science
         case "SPORTS":
-            self = .sport
+            self = .sports
         default:
             return nil
         }

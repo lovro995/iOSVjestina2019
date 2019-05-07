@@ -102,7 +102,7 @@ class InitialViewController: UIViewController {
                 
                 
                 var color: UIColor
-                if(selectedQuiz.category == Category.sport){
+                if(selectedQuiz.category == Category.sports){
                     color = UIColor.white
                 }else{
                     color = UIColor.black

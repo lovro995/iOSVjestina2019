@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hzQ-sI-15v">
-                    <rect key="frame" x="0.0" y="151" width="375" height="433"/>
+                    <rect key="frame" x="0.0" y="151" width="375" height="496"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to QuizApp! :)" textAlignment="center" lineBreakMode="tailTruncation" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwn-uj-MWE">
@@ -60,7 +60,7 @@
                 <constraint firstItem="SV1-cs-vq1" firstAttribute="leading" secondItem="lwn-uj-MWE" secondAttribute="leading" constant="45" id="88O-b6-kd4"/>
                 <constraint firstItem="0w5-m1-egT" firstAttribute="top" secondItem="SV1-cs-vq1" secondAttribute="top" id="Rz1-GB-cde"/>
                 <constraint firstItem="5dG-0x-jFM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="Xmb-E7-L5K"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hzQ-sI-15v" secondAttribute="bottom" constant="83" id="XvU-Qa-26B"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hzQ-sI-15v" secondAttribute="bottom" constant="20" id="XvU-Qa-26B"/>
                 <constraint firstItem="5dG-0x-jFM" firstAttribute="leading" secondItem="lwn-uj-MWE" secondAttribute="trailing" constant="-35" id="bDK-sS-Ajp"/>
                 <constraint firstItem="hzQ-sI-15v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="goo-K2-nrH"/>
                 <constraint firstItem="hzQ-sI-15v" firstAttribute="firstBaseline" secondItem="lwn-uj-MWE" secondAttribute="baseline" constant="62.5" id="lpR-Xh-BhM"/>

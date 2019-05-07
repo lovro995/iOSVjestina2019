@@ -71,9 +71,7 @@ class QuizzesListViewController: UIViewController {
 }
 
 extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return quizzesList.count
-    }
+   
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 135
@@ -83,15 +81,23 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
         
         let cell = Bundle.main.loadNibNamed("QuizViewCell", owner: self, options: nil)?.first as! QuizViewCell
         
-        cell.quizTitleView.text =  quizzesList[indexPath.row].title
-        cell.quizDescriptionView.text = quizzesList[indexPath.row].description
+        var listOfQuizzes:[Quiz] = []
+        
+        if(indexPath.section == 0){
+            listOfQuizzes.append(contentsOf: filterQuizzesList(category: Category.sports))
+        } else{
+            listOfQuizzes.append(contentsOf: filterQuizzesList(category: Category.science))
+        }
+        
+        cell.quizTitleView.text =  listOfQuizzes[indexPath.row].title
+        cell.quizDescriptionView.text = listOfQuizzes[indexPath.row].description
        
         let categoryImageService = CategoryImageService()
-        categoryImageService.fetchCategoryImage(categoryImageString : quizzesList[indexPath.row].imageString!) { (image) in
+        categoryImageService.fetchCategoryImage(categoryImageString : listOfQuizzes[indexPath.row].imageString!) { (image) in
             DispatchQueue.main.async {
                 cell.quizImageView.image = image
                 
-                if(indexPath.row == (self.quizzesList.count - 1 )){
+                if(indexPath.section == 1 && ((indexPath.row + 1) == (self.filterQuizzesList(category:Category.science).count ))){
                     self.quizzesTableView.isHidden = false
                     self.fetchingQuizzesLabel.isHidden = true
                     self.loadingBar.isHidden = true
@@ -99,6 +105,53 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
             }
         }
         return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let filteredQuizzes: [Quiz]
+        if(section == 0){
+             filteredQuizzes = filterQuizzesList(category: Category.sports)
+        }else{
+             filteredQuizzes = filterQuizzesList(category: Category.science)
+        }
+        
+         return filteredQuizzes.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var nameUpperCased : String?
+        if(section == 0){
+            nameUpperCased = String.uppercased(Category.sports.rawValue)()
+        }else{
+            nameUpperCased = String.uppercased(Category.science.rawValue)()
+        }
+        
+        return nameUpperCased
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if(section == 0){
+            view.tintColor = Category.sports.color
+        }else{
+            view.tintColor = Category.science.color
+        }
+        
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.white
+    }
+    
+    func filterQuizzesList(category : Category) -> [Quiz]{
+        return quizzesList.filter({ (quiz) -> Bool in
+            quiz.category == category
+        })
     }
     
 }

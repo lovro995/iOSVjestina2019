@@ -20,6 +20,8 @@ class QuestionView: UIView {
     var correctAnswer: Int = -1
     var answerSelected: Bool = false
     
+    weak var delegate : QuestionViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -105,5 +107,6 @@ class QuestionView: UIView {
             sayUserFailed(btnId:btnId)
         }
         
+        delegate?.questionAnswered()
     }
 }

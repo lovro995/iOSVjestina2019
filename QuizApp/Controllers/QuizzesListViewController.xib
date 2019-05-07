@@ -24,48 +24,29 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hzQ-sI-15v">
-                    <rect key="frame" x="0.0" y="151" width="375" height="496"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="627"/>
+                    <color key="backgroundColor" red="0.82372492549999998" green="0.9446098208" blue="0.99916988610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to QuizApp! :)" textAlignment="center" lineBreakMode="tailTruncation" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwn-uj-MWE">
-                    <rect key="frame" x="55" y="63" width="265" height="32"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5dG-0x-jFM">
-                    <rect key="frame" x="285" y="25" width="52" height="30"/>
-                    <state key="normal" title="Log out">
-                        <color key="titleColor" red="1" green="0.12023770070000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="logOutAction:" destination="-1" eventType="touchUpInside" id="zGN-gr-kEW"/>
-                    </connections>
-                </button>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0w5-m1-egT">
+                    <rect key="frame" x="263" y="32" width="20" height="20"/>
+                </activityIndicatorView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetching quizzes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SV1-cs-vq1">
-                    <rect key="frame" x="100" y="103" width="130" height="21"/>
+                    <rect key="frame" x="122" y="31" width="130" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0w5-m1-egT">
-                    <rect key="frame" x="238" y="103" width="20" height="20"/>
-                </activityIndicatorView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.82372492549999998" green="0.9446098208" blue="0.99916988610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5dG-0x-jFM" secondAttribute="trailing" constant="38" id="0XR-yh-v7C"/>
-                <constraint firstItem="SV1-cs-vq1" firstAttribute="top" secondItem="lwn-uj-MWE" secondAttribute="bottom" constant="8" id="2UA-dS-0Zf"/>
-                <constraint firstItem="0w5-m1-egT" firstAttribute="leading" secondItem="SV1-cs-vq1" secondAttribute="leading" constant="138" id="7ih-6F-kPQ"/>
-                <constraint firstItem="SV1-cs-vq1" firstAttribute="leading" secondItem="lwn-uj-MWE" secondAttribute="leading" constant="45" id="88O-b6-kd4"/>
-                <constraint firstItem="0w5-m1-egT" firstAttribute="top" secondItem="SV1-cs-vq1" secondAttribute="top" id="Rz1-GB-cde"/>
-                <constraint firstItem="5dG-0x-jFM" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="Xmb-E7-L5K"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hzQ-sI-15v" secondAttribute="bottom" constant="20" id="XvU-Qa-26B"/>
-                <constraint firstItem="5dG-0x-jFM" firstAttribute="leading" secondItem="lwn-uj-MWE" secondAttribute="trailing" constant="-35" id="bDK-sS-Ajp"/>
-                <constraint firstItem="hzQ-sI-15v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="goo-K2-nrH"/>
-                <constraint firstItem="hzQ-sI-15v" firstAttribute="firstBaseline" secondItem="lwn-uj-MWE" secondAttribute="baseline" constant="62.5" id="lpR-Xh-BhM"/>
-                <constraint firstItem="lwn-uj-MWE" firstAttribute="top" secondItem="5dG-0x-jFM" secondAttribute="bottom" constant="8" id="oWn-An-xq9"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hzQ-sI-15v" secondAttribute="trailing" id="vNO-MS-vbb"/>
+                <constraint firstItem="SV1-cs-vq1" firstAttribute="top" secondItem="0w5-m1-egT" secondAttribute="bottom" constant="-21" id="2gw-Oq-det"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hzQ-sI-15v" secondAttribute="bottom" constant="20" id="VdA-np-5a4"/>
+                <constraint firstItem="hzQ-sI-15v" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="XgO-T1-bfF"/>
+                <constraint firstItem="SV1-cs-vq1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="122" id="e55-Yj-mHq"/>
+                <constraint firstItem="SV1-cs-vq1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="11" id="hZV-mi-m5g"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hzQ-sI-15v" secondAttribute="trailing" id="l1w-C4-huV"/>
+                <constraint firstItem="0w5-m1-egT" firstAttribute="leading" secondItem="SV1-cs-vq1" secondAttribute="trailing" constant="11" id="ntR-h0-15U"/>
+                <constraint firstItem="hzQ-sI-15v" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="oEI-PD-h4I"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="53.600000000000001" y="73.313343328335833"/>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuizScreenViewController" customModule="QuizApp" customModuleProvider="target">
+            <connections>
+                <outlet property="questionsScrollView" destination="VE0-Lo-bA9" id="Wao-EF-Yo1"/>
+                <outlet property="selectedQuizImageView" destination="bIY-5C-LTc" id="fBa-js-Rah"/>
+                <outlet property="selectedQuizTitle" destination="JLM-hJ-Nnw" id="bLA-Fv-shs"/>
+                <outlet property="startQuizBtn" destination="562-6y-lHt" id="fsh-tl-NhF"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLM-hJ-Nnw">
+                    <rect key="frame" x="0.0" y="54" width="375" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bIY-5C-LTc">
+                    <rect key="frame" x="90" y="104" width="195" height="150"/>
+                </imageView>
+                <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VE0-Lo-bA9">
+                    <rect key="frame" x="0.0" y="300" width="375" height="367"/>
+                </scrollView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="562-6y-lHt">
+                    <rect key="frame" x="154" y="262" width="67" height="30"/>
+                    <state key="normal" title="Start quiz"/>
+                    <connections>
+                        <action selector="startQuizAction:" destination="-1" eventType="touchUpInside" id="16s-YW-ZnM"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.82372492549999998" green="0.9446098208" blue="0.99916988610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="bIY-5C-LTc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="84" id="8R1-qn-fcD"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VE0-Lo-bA9" secondAttribute="bottom" id="Bnr-ET-yh3"/>
+                <constraint firstItem="562-6y-lHt" firstAttribute="top" secondItem="bIY-5C-LTc" secondAttribute="bottom" constant="8" id="CQv-uZ-rOv"/>
+                <constraint firstItem="562-6y-lHt" firstAttribute="centerX" secondItem="bIY-5C-LTc" secondAttribute="centerX" id="EBx-1k-crR"/>
+                <constraint firstItem="VE0-Lo-bA9" firstAttribute="top" secondItem="562-6y-lHt" secondAttribute="bottom" constant="8" id="EZi-rv-Rnt"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="bIY-5C-LTc" secondAttribute="bottom" constant="413" id="FS9-Un-dI7"/>
+                <constraint firstItem="bIY-5C-LTc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="90" id="Fjd-aT-Fs7"/>
+                <constraint firstItem="bIY-5C-LTc" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="195:667" id="IRN-n0-Ko6"/>
+                <constraint firstItem="VE0-Lo-bA9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="auB-uW-jrh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JLM-hJ-Nnw" secondAttribute="trailing" id="fIs-a6-6MS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VE0-Lo-bA9" secondAttribute="trailing" id="h0z-FA-GYC"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bIY-5C-LTc" secondAttribute="trailing" constant="90" id="n8h-eI-9zE"/>
+                <constraint firstItem="bIY-5C-LTc" firstAttribute="firstBaseline" secondItem="JLM-hJ-Nnw" secondAttribute="baseline" constant="27.5" id="xyp-AY-Uyt"/>
+                <constraint firstItem="JLM-hJ-Nnw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="z9R-Ue-Kkb"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
+        </view>
+    </objects>
+</document>

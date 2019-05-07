@@ -34,7 +34,10 @@ class LoginViewController: UIViewController {
                     
                     self.saveUserData(userData : userData)
                     
-                    let vc = QuizzesListViewController()
+                    let vc = UINavigationController()
+                      (vc as UINavigationController).pushViewController(QuizzesListViewController(), animated: false)
+                    
+                    //self.dismiss(animated: true, completion: nil)
                     self.present(vc, animated: true, completion: nil)
                     
                 }else{

@@ -18,14 +18,15 @@ class QuizzesListViewController: UIViewController {
     @IBOutlet weak var fetchingQuizzesLabel: UILabel!
     
     @IBOutlet weak var quizzesTableView: UITableView!
-    @IBAction func logOutAction(_ sender: Any) {
-        deleteUserData()
-        let vc = LoginViewController()
-        self.present(vc, animated: true, completion: nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let logoutBtn: UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: (#selector(QuizzesListViewController.logoutUser)))
+        
+        logoutBtn.tintColor = UIColor.red
+        
+        self.navigationItem.setRightBarButton(logoutBtn, animated: true)
         
         self.quizzesTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
@@ -35,12 +36,19 @@ class QuizzesListViewController: UIViewController {
         grabQuizzes()
     }
     
+    @objc func logoutUser(){
+        deleteUserData()
+        
+        let vc = LoginViewController()
+        //self.dismiss(animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     func deleteUserData(){
         let userDefaults = UserDefaults.standard
         userDefaults.set(nil, forKey: "user_id")
         userDefaults.set(nil, forKey: "token")
     }
-    
     
     func grabQuizzes(){
         self.loadingBar.isHidden = false
@@ -146,6 +154,22 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
         
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.textColor = UIColor.white
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //(self.parent as! UINavigationController).pushViewController(QuizScreenViewController(), animated: true)
+        
+        var selectedQuiz: Quiz
+        
+        if(indexPath.section == 0){
+            selectedQuiz = filterQuizzesList(category: Category.sports)[indexPath.row]
+        }else{
+            selectedQuiz = filterQuizzesList(category: Category.science)[indexPath.row]
+        }
+        
+        let nextVC = QuizScreenViewController();
+        nextVC.selectedQuiz = selectedQuiz
+        self.navigationController?.pushViewController(nextVC, animated: true)
     }
     
     func filterQuizzesList(category : Category) -> [Quiz]{

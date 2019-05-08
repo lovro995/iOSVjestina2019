@@ -9,5 +9,5 @@
 import Foundation
 
 protocol QuestionViewDelegate : class {
-    func questionAnswered()
+    func questionAnswered(isAnswerCorrect : Bool)
 }

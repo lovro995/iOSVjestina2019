@@ -103,10 +103,11 @@ class QuestionView: UIView {
         
         if(btnId == correctAnswer){
             sayUserWon(btnId:btnId)
+            delegate?.questionAnswered(isAnswerCorrect: true)
         }else{
             sayUserFailed(btnId:btnId)
+            delegate?.questionAnswered(isAnswerCorrect: false)
         }
         
-        delegate?.questionAnswered()
     }
 }

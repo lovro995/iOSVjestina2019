@@ -28,6 +28,7 @@
 		C9724118227DA6E2002265F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9724116227DA6E2002265F9 /* LoginViewController.swift */; };
 		C9724119227DA6E2002265F9 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C9724117227DA6E2002265F9 /* LoginViewController.xib */; };
 		C972411B227DB729002265F9 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C972411A227DB729002265F9 /* LoginService.swift */; };
+		C980ADB6228365820048B295 /* SaveQuizService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C980ADB5228365820048B295 /* SaveQuizService.swift */; };
 		C99720BF228094EE00163503 /* QuizViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99720BD228094EE00163503 /* QuizViewCell.swift */; };
 		C99720C0228094EE00163503 /* QuizViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C99720BE228094EE00163503 /* QuizViewCell.xib */; };
 /* End PBXBuildFile section */
@@ -56,6 +57,7 @@
 		C9724116227DA6E2002265F9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C9724117227DA6E2002265F9 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		C972411A227DB729002265F9 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		C980ADB5228365820048B295 /* SaveQuizService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveQuizService.swift; sourceTree = "<group>"; };
 		C99720BD228094EE00163503 /* QuizViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewCell.swift; sourceTree = "<group>"; };
 		C99720BE228094EE00163503 /* QuizViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuizViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +110,7 @@
 				C96D36B922590D0E008E73F5 /* QuizzesService.swift */,
 				C92F5B34225A9A7A000F59B6 /* CategoryImageService.swift */,
 				C972411A227DB729002265F9 /* LoginService.swift */,
+				C980ADB5228365820048B295 /* SaveQuizService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 				C94FB7942281D16D0034D560 /* QuizScreenViewController.swift in Sources */,
 				C99720BF228094EE00163503 /* QuizViewCell.swift in Sources */,
 				C96D36BC22590D33008E73F5 /* Question.swift in Sources */,
+				C980ADB6228365820048B295 /* SaveQuizService.swift in Sources */,
 				C969E7F2227DC8030003D209 /* UserData.swift in Sources */,
 				C972411B227DB729002265F9 /* LoginService.swift in Sources */,
 				C96D36BE22590D52008E73F5 /* Quiz.swift in Sources */,

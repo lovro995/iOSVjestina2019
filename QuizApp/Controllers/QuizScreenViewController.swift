@@ -100,7 +100,18 @@ extension QuizScreenViewController : QuestionViewDelegate{
             
             let passedTime = Date().timeIntervalSince(startTime!)
             print("vrijeme")
+            //let s : Double = Double(passedTime)
             print(passedTime)
+            
+            let quizResultService = SaveQuizService()
+            
+           /* quizResultService.sendQuizResult(quizId: selectedQuiz!.id, passedTime: Double(passedTime), numberOfCorrectAnswers: correctAnswersNum) { (userData) in
+                print("lala")
+            } */
+            
+            quizResultService.saveQuizResult(quizId : selectedQuiz!.id, correctAnswersNum: correctAnswersNum, time: Double(passedTime)) { (userData) in
+                print("fin")
+            }
             
         }
         

@@ -52,6 +52,12 @@ class LoginViewController: UIViewController {
         let userDefaults = UserDefaults.standard
         userDefaults.set(userData.user_id, forKey: "user_id")
         userDefaults.set(userData.token, forKey: "token")
+        
+        print("user_id")
+        print(userData.user_id)
+        
+        print("token")
+        print(userData.token)
     }
     
     override func viewDidLoad() {

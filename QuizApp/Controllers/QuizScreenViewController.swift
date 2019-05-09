@@ -11,14 +11,12 @@ import UIKit
 class QuizScreenViewController: UIViewController {
     
     var selectedQuiz : Quiz?
-    
+    var answersList : [Bool] = []
     var startTime : Date?
 
     @IBOutlet weak var selectedQuizImageView: UIImageView!
     @IBOutlet weak var questionsScrollView: UIScrollView!
     @IBOutlet weak var selectedQuizTitle: UILabel!
-    
-    var correctAnswersNum = 0
     
     @IBOutlet weak var startQuizBtn: UIButton!
     override func viewDidLoad() {
@@ -38,6 +36,8 @@ class QuizScreenViewController: UIViewController {
     
     @IBAction func startQuizAction(_ sender: Any) {
         manageQuestionsViewsToScrollView()
+        
+        self.navigationItem.setHidesBackButton(true, animated: true)
         
         questionsScrollView.isHidden = false
         startQuizBtn.isEnabled = false
@@ -79,42 +79,49 @@ extension QuizScreenViewController : QuestionViewDelegate{
     func questionAnswered(isAnswerCorrect : Bool) {
         //need to scroll to next question or handle if quiz is finished
         print("question answered.")
-        if(isAnswerCorrect){
-            correctAnswersNum += 1
-        }
+        
+        answersList.append(isAnswerCorrect)
         
         let currentScrollViewPostion = questionsScrollView.contentOffset
         
+        /*
         var nextX = questionsScrollView.contentSize.width
         nextX /= CGFloat(selectedQuiz!.questions.count)
-        nextX = currentScrollViewPostion.x + nextX
+        nextX = currentScrollViewPostion.x + nextX*/
+        
+        var nextX = questionsScrollView.contentSize.width // width of scroll view
+        nextX /= CGFloat(selectedQuiz!.questions.count) // size of 1 question view
+        
+        nextX *= CGFloat(answersList.count)
         
         if(!isScrolledToLastQuestion(position: nextX)){
             //scroll to next question
             
             let nextScrollPosition = CGPoint(x: nextX, y: currentScrollViewPostion.y)
-            questionsScrollView.setContentOffset(nextScrollPosition, animated: true)
             
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.questionsScrollView.setContentOffset(nextScrollPosition, animated: true)
+            }
+    
         } else{
             //finish quiz
             
             let passedTime = Date().timeIntervalSince(startTime!)
-            print("vrijeme")
-            //let s : Double = Double(passedTime)
-            print(passedTime)
             
             let quizResultService = SaveQuizService()
-            
-           /* quizResultService.sendQuizResult(quizId: selectedQuiz!.id, passedTime: Double(passedTime), numberOfCorrectAnswers: correctAnswersNum) { (userData) in
-                print("lala")
-            } */
-            
-            quizResultService.saveQuizResult(quizId : selectedQuiz!.id, correctAnswersNum: correctAnswersNum, time: Double(passedTime)) { (userData) in
-                print("fin")
+            quizResultService.saveQuizResult(quizId : selectedQuiz!.id, correctAnswersNum: calcCorrectAnswersNum(), time: Double(passedTime)) { (serverResponse) in
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
-            
         }
-        
+    }
+    
+    func calcCorrectAnswersNum() -> Int {
+        return answersList.filter({ (current) -> Bool in
+            return current == true
+        }).count
     }
     
     func isScrolledToLastQuestion(position : CGFloat) -> Bool{

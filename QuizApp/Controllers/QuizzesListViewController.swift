@@ -159,6 +159,8 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //(self.parent as! UINavigationController).pushViewController(QuizScreenViewController(), animated: true)
         
+        tableView.cellForRow(at: indexPath)?.setSelected(false, animated: false)
+        
         var selectedQuiz: Quiz
         
         if(indexPath.section == 0){

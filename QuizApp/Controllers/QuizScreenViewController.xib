@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="QuizScreenViewController" customModule="QuizApp" customModuleProvider="target">
             <connections>
+                <outlet property="bottomLineView" destination="DPt-V4-2sA" id="dME-ds-9yg"/>
                 <outlet property="questionsScrollView" destination="VE0-Lo-bA9" id="Wao-EF-Yo1"/>
                 <outlet property="selectedQuizImageView" destination="bIY-5C-LTc" id="fBa-js-Rah"/>
                 <outlet property="selectedQuizTitle" destination="JLM-hJ-Nnw" id="bLA-Fv-shs"/>
@@ -24,21 +25,30 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLM-hJ-Nnw">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quiz title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLM-hJ-Nnw">
                     <rect key="frame" x="0.0" y="54" width="375" height="28"/>
                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bIY-5C-LTc">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bIY-5C-LTc">
                     <rect key="frame" x="90" y="104" width="195" height="150"/>
                 </imageView>
                 <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VE0-Lo-bA9">
-                    <rect key="frame" x="0.0" y="300" width="375" height="367"/>
+                    <rect key="frame" x="0.0" y="308" width="375" height="359"/>
                 </scrollView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="562-6y-lHt">
-                    <rect key="frame" x="154" y="262" width="67" height="30"/>
-                    <state key="normal" title="Start quiz"/>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPt-V4-2sA">
+                    <rect key="frame" x="0.0" y="308" width="375" height="2"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="562-6y-lHt">
+                    <rect key="frame" x="154" y="277" width="67" height="15"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="2dE-s7-MM3"/>
+                    </constraints>
+                    <state key="normal" title="Start quiz">
+                        <color key="titleColor" red="1" green="0.35666350219999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
                     <connections>
                         <action selector="startQuizAction:" destination="-1" eventType="touchUpInside" id="16s-YW-ZnM"/>
                     </connections>
@@ -48,18 +58,23 @@
             <constraints>
                 <constraint firstItem="bIY-5C-LTc" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="84" id="8R1-qn-fcD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="VE0-Lo-bA9" secondAttribute="bottom" id="Bnr-ET-yh3"/>
-                <constraint firstItem="562-6y-lHt" firstAttribute="top" secondItem="bIY-5C-LTc" secondAttribute="bottom" constant="8" id="CQv-uZ-rOv"/>
-                <constraint firstItem="562-6y-lHt" firstAttribute="centerX" secondItem="bIY-5C-LTc" secondAttribute="centerX" id="EBx-1k-crR"/>
-                <constraint firstItem="VE0-Lo-bA9" firstAttribute="top" secondItem="562-6y-lHt" secondAttribute="bottom" constant="8" id="EZi-rv-Rnt"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="bIY-5C-LTc" secondAttribute="bottom" constant="413" id="FS9-Un-dI7"/>
                 <constraint firstItem="bIY-5C-LTc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="90" id="Fjd-aT-Fs7"/>
                 <constraint firstItem="bIY-5C-LTc" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="195:667" id="IRN-n0-Ko6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DPt-V4-2sA" secondAttribute="bottom" constant="357" id="X03-cJ-lEY"/>
+                <constraint firstItem="DPt-V4-2sA" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Y6p-4N-fyU"/>
                 <constraint firstItem="VE0-Lo-bA9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="auB-uW-jrh"/>
+                <constraint firstItem="DPt-V4-2sA" firstAttribute="top" secondItem="562-6y-lHt" secondAttribute="bottom" constant="16" id="bGM-Jw-YlS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="JLM-hJ-Nnw" secondAttribute="trailing" id="fIs-a6-6MS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VE0-Lo-bA9" secondAttribute="trailing" id="h0z-FA-GYC"/>
+                <constraint firstItem="562-6y-lHt" firstAttribute="top" secondItem="bIY-5C-LTc" secondAttribute="bottom" constant="23" id="iCQ-b6-Txr"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bIY-5C-LTc" secondAttribute="trailing" constant="90" id="n8h-eI-9zE"/>
+                <constraint firstItem="DPt-V4-2sA" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="oXc-zv-Gaj"/>
+                <constraint firstItem="562-6y-lHt" firstAttribute="centerX" secondItem="bIY-5C-LTc" secondAttribute="centerX" id="rV7-N8-F61"/>
+                <constraint firstItem="VE0-Lo-bA9" firstAttribute="top" secondItem="562-6y-lHt" secondAttribute="bottom" constant="16" id="wfw-Ql-Vns"/>
                 <constraint firstItem="bIY-5C-LTc" firstAttribute="firstBaseline" secondItem="JLM-hJ-Nnw" secondAttribute="baseline" constant="27.5" id="xyp-AY-Uyt"/>
                 <constraint firstItem="JLM-hJ-Nnw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="z9R-Ue-Kkb"/>
+                <constraint firstItem="562-6y-lHt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="277" id="zUb-Wr-mTI"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>

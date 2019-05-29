@@ -17,28 +17,45 @@ class QuizScreenViewController: UIViewController {
     @IBOutlet weak var selectedQuizImageView: UIImageView!
     @IBOutlet weak var questionsScrollView: UIScrollView!
     @IBOutlet weak var selectedQuizTitle: UILabel!
+    @IBOutlet weak var bottomLineView: UIView!
     
     @IBOutlet weak var startQuizBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        questionsScrollView.isScrollEnabled = false
-        selectedQuizTitle.text = selectedQuiz?.title
-        
         let categoryImageService = CategoryImageService()
         categoryImageService.fetchCategoryImage(categoryImageString : selectedQuiz!.imageString!) { (image) in
             DispatchQueue.main.async {
                 self.selectedQuizImageView.image = image
+                
+                self.questionsScrollView.isScrollEnabled = false
+                self.selectedQuizTitle.text = self.selectedQuiz?.title
+                
+                self.selectedQuizTitle.isHidden = false
+                self.selectedQuizImageView.isHidden = false
+                self.startQuizBtn.isHidden = false
+                
+                self.beginStartQuizBtnAnimation()
             }
         }
         
     }
     
+    func beginStartQuizBtnAnimation() {
+        self.startQuizBtn.alpha = 0.1
+        UIButton.animate(withDuration: 0.6, delay: 0.0, options: [.curveLinear, .repeat, .autoreverse, .allowUserInteraction], animations: {self.startQuizBtn.alpha = 1.0}, completion: nil)
+    }
+    
     @IBAction func startQuizAction(_ sender: Any) {
+        
+        self.startQuizBtn.layer.removeAllAnimations()
+        self.startQuizBtn.layoutIfNeeded()
+        
         manageQuestionsViewsToScrollView()
         
         self.navigationItem.setHidesBackButton(true, animated: true)
         
+        bottomLineView.isHidden = false
         questionsScrollView.isHidden = false
         startQuizBtn.isEnabled = false
         startTime = Date()

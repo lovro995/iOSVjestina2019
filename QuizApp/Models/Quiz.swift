@@ -14,6 +14,7 @@ class Quiz {
     let category: Category
     let description : String
     let imageString : String?
+    let level : Int
     var questions : [Question] = []
     
     init?(json: Any) {
@@ -28,9 +29,11 @@ class Quiz {
             let description = jsonDict["description"] as? String,
             let imageString = jsonDict["image"] as? String,
             let categoryString = jsonDict["category"] as? String,
+            let level = jsonDict["level"] as? Int,
             let questionsJSON = jsonDict["questions"] as? [Any] {
             
             self.id = id
+            self.level = level
             self.title = title
             self.category = Category(categoryString: categoryString)!
             self.description = description
@@ -41,9 +44,6 @@ class Quiz {
                 self.questions.append(question!)
             }
             
-            
-            //print("Slika je na \(self.imageString!)")
-            //print("napravio QUIZ..........")
         } else {
             return nil
         }

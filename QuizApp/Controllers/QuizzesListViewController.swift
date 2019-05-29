@@ -97,11 +97,13 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
             listOfQuizzes.append(contentsOf: filterQuizzesList(category: Category.science))
         }
         
-        cell.quizTitleView.text =  listOfQuizzes[indexPath.row].title
-        cell.quizDescriptionView.text = listOfQuizzes[indexPath.row].description
+        let quiz = listOfQuizzes[indexPath.row]
+        
+        cell.quizTitleView.text =  quiz.title
+        cell.quizDescriptionView.text = quiz.description
        
         let categoryImageService = CategoryImageService()
-        categoryImageService.fetchCategoryImage(categoryImageString : listOfQuizzes[indexPath.row].imageString!) { (image) in
+        categoryImageService.fetchCategoryImage(categoryImageString : quiz.imageString!) { (image) in
             DispatchQueue.main.async {
                 cell.quizImageView.image = image
                 
@@ -112,6 +114,24 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
                 }
             }
         }
+        
+        switch quiz.level {
+        case 1:
+            cell.levelView1.backgroundColor = UIColor.green
+            cell.levelView2.isHidden = true
+            cell.levelView3.isHidden = true
+        case 2:
+            cell.levelView1.backgroundColor = UIColor.orange
+            cell.levelView2.backgroundColor = UIColor.orange
+            cell.levelView3.isHidden = true
+        case 3:
+            cell.levelView1.backgroundColor = UIColor.red
+            cell.levelView1.backgroundColor = UIColor.red
+            cell.levelView1.backgroundColor = UIColor.red
+        default: break
+            
+        }
+        
         return cell
     }
     

@@ -14,4 +14,9 @@ class QuizViewCell: UITableViewCell {
     @IBOutlet weak var quizDescriptionView: UILabel!
     @IBOutlet weak var quizImageView: UIImageView!
     
+    @IBOutlet weak var levelView1: UIView!
+    @IBOutlet weak var levelView2: UIView!
+    @IBOutlet weak var levelView3: UIView!
+    
+    
 }

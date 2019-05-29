@@ -18,7 +18,7 @@ enum Category: String {
         case .sports:
             return UIColor.blue
         case .science:
-            return UIColor.green
+            return UIColor.brown
         }
     }
 

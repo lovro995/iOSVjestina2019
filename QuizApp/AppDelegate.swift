@@ -31,9 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             vc = LoginViewController()
         } else{
             print("user is logged in")
-            vc = UINavigationController()
-            (vc as! UINavigationController).navigationItem.title = "Aaaa"
-            (vc as! UINavigationController).pushViewController(QuizzesListViewController(), animated: false)
+            vc = TabBarViewController()
         }
         
         window?.rootViewController = vc

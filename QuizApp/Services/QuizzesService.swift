@@ -23,6 +23,7 @@ class QuizzesService {
                     do {
                        
                         let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        //print(json)
                         let quizzes = Quizzes(json: json)
                         
                         completion(quizzes)

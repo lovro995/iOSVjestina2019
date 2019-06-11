@@ -17,8 +17,9 @@ class QuizScreenViewController: UIViewController {
     @IBOutlet weak var selectedQuizImageView: UIImageView!
     @IBOutlet weak var questionsScrollView: UIScrollView!
     @IBOutlet weak var selectedQuizTitle: UILabel!
-    @IBOutlet weak var bottomLineView: UIView!
+    //@IBOutlet weak var bottomLineView: UIView!
     
+    @IBOutlet weak var leaderboardBtn: UIButton!
     @IBOutlet weak var startQuizBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class QuizScreenViewController: UIViewController {
                 self.selectedQuizTitle.isHidden = false
                 self.selectedQuizImageView.isHidden = false
                 self.startQuizBtn.isHidden = false
+                self.leaderboardBtn.isHidden = false
                 
                 self.beginStartQuizBtnAnimation()
             }
@@ -46,6 +48,12 @@ class QuizScreenViewController: UIViewController {
         UIButton.animate(withDuration: 0.6, delay: 0.0, options: [.curveLinear, .repeat, .autoreverse, .allowUserInteraction], animations: {self.startQuizBtn.alpha = 1.0}, completion: nil)
     }
     
+    @IBAction func showLeaderboard(_ sender: Any) {
+        let leaderboardVC = LeaderboardViewController()
+        leaderboardVC.quizId = selectedQuiz?.id
+        self.navigationController?.pushViewController(leaderboardVC, animated: true)
+    }
+    
     @IBAction func startQuizAction(_ sender: Any) {
         
         self.startQuizBtn.layer.removeAllAnimations()
@@ -55,7 +63,7 @@ class QuizScreenViewController: UIViewController {
         
         self.navigationItem.setHidesBackButton(true, animated: true)
         
-        bottomLineView.isHidden = false
+        //bottomLineView.isHidden = false
         questionsScrollView.isHidden = false
         startQuizBtn.isEnabled = false
         startTime = Date()

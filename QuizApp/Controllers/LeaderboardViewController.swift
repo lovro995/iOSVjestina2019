@@ -10,7 +10,7 @@ import UIKit
 
 class LeaderboardViewController: UIViewController {
     
-    var quizId : Int?
+    var quizId : Int32?
     let cellReuseIdentifier = "cell"
     var leaderboardDataList : [LeaderboardData] = []
 
@@ -30,7 +30,7 @@ class LeaderboardViewController: UIViewController {
         
         let leaderboardService = LeaderboardService()
         
-        leaderboardService.fetchLeaderboard(quizId : quizId!) { (leaderboardDataList) in
+        leaderboardService.fetchLeaderboard(quizId : Int(quizId!)) { (leaderboardDataList) in
             
             if let leaderboardDataList = leaderboardDataList {
                 print("leaderboardDataList successfully fetched.")

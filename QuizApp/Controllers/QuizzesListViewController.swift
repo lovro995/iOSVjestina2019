@@ -100,8 +100,8 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
         
         let quiz = listOfQuizzes[indexPath.row]
         
-        cell.quizTitleView.text =  quiz.title
-        cell.quizDescriptionView.text = quiz.description
+        cell.quizTitleView.text = quiz.title
+        cell.quizDescriptionView.text = quiz.desc
        
         let categoryImageService = CategoryImageService()
         categoryImageService.fetchCategoryImage(categoryImageString : quiz.imageString!) { (image) in
@@ -197,7 +197,7 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
     
     func filterQuizzesList(category : Category) -> [Quiz]{
         return quizzesList.filter({ (quiz) -> Bool in
-            quiz.category == category
+            Category(categoryString: quiz.category!) == category
         })
     }
     

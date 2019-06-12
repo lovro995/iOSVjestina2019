@@ -75,11 +75,11 @@ class InitialViewController: UIViewController {
         let quizId = Int.random(in: 0..<quizzes.quizzes.count)
         let selectedQuiz = quizzes.quizzes[quizId]
         
-        let questionId = Int.random(in: 0..<selectedQuiz.questions.count)
-        let selectedQuestion = selectedQuiz.questions[questionId]
+        let questionId = Int.random(in: 0..<selectedQuiz.questions!.count)
+        let selectedQuestion = selectedQuiz.questions![questionId]
         
         
-        manageCategoryView(selectedQuiz:selectedQuiz, selectedQuestion: selectedQuestion)
+      //  manageCategoryView(selectedQuiz:selectedQuiz, selectedQuestion: selectedQuestion)
         
         
         //print("broj kvizova je \(quizzes.quizzes.count)")
@@ -96,21 +96,21 @@ class InitialViewController: UIViewController {
                 self.quizImageView.isHidden = false
                 self.quizTitleView.isHidden = false
                 
-                self.quizImageView.backgroundColor = selectedQuiz.category.color
-                self.quizTitleView.backgroundColor = selectedQuiz.category.color
+              //  self.quizImageView.backgroundColor = selectedQuiz.category.color
+              //  self.quizTitleView.backgroundColor = selectedQuiz.category.color
                 
-                self.funFactLabel.backgroundColor = selectedQuiz.category.color
+              //  self.funFactLabel.backgroundColor = selectedQuiz!.category.color
                 
                 
                 var color: UIColor
-                if(selectedQuiz.category == Category.sports){
+                /*if(selectedQuiz.category == Category.sports){
                     color = UIColor.white
                 }else{
                     color = UIColor.black
-                }
+                }*/
                 
-                self.funFactLabel.textColor = color
-                self.quizTitleView.textColor = color
+               // self.funFactLabel.textColor = color
+                //self.quizTitleView.textColor = color
                 
                 self.funFactLabel.isHidden = false
                 
@@ -128,12 +128,12 @@ class InitialViewController: UIViewController {
             
             customView.questionTitleLabel.text = selectedQuestion.question
             
-            customView.Answer0Btn.setTitle(selectedQuestion.answers[0], for: .normal)
-            customView.Answer1Btn.setTitle(selectedQuestion.answers[1], for: .normal)
-            customView.answer2Btn.setTitle(selectedQuestion.answers[2], for: .normal)
-            customView.answer3Btn.setTitle(selectedQuestion.answers[3], for: .normal)
+            customView.Answer0Btn.setTitle(selectedQuestion.answers![0], for: .normal)
+            customView.Answer1Btn.setTitle(selectedQuestion.answers![1], for: .normal)
+            customView.answer2Btn.setTitle(selectedQuestion.answers![2], for: .normal)
+            customView.answer3Btn.setTitle(selectedQuestion.answers![3], for: .normal)
             
-            customView.correctAnswer = selectedQuestion.correct_answer
+            customView.correctAnswer = Int(selectedQuestion.correct_answer)
             
             CustomViewContainer.isHidden = false
         }
@@ -141,20 +141,20 @@ class InitialViewController: UIViewController {
     
     func updateFunFactLabel(quizzes : Quizzes){
         
-        let filterWordAppearsCount = calcFilterWordAppearsCount(quizzes:quizzes)
-        funFactLabel.text = "FUN FACT -> '\(filterWord)' appears \(filterWordAppearsCount) times."
+      //  let filterWordAppearsCount = calcFilterWordAppearsCount(quizzes:quizzes)
+      //  funFactLabel.text = "FUN FACT -> '\(filterWord)' appears \(filterWordAppearsCount) times."
     }
     
-    func calcFilterWordAppearsCount(quizzes:Quizzes) -> Int{
+   // func calcFilterWordAppearsCount(quizzes:Quizzes) -> Int{
         
-        return quizzes.quizzes.map({
+      /*  return quizzes.quizzes.map({
             $0.questions.filter({
                 $0.question.contains(filterWord)
             }).count
             
-        }).reduce(0, +)
+        }).reduce(0, +)*/
         
-    }
+   // }
     
     
     

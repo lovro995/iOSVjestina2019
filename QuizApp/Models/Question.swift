@@ -6,6 +6,7 @@
 //  Copyright © 2019 Lovro Pejic. All rights reserved.
 //
 
+/*
 import Foundation
 
 class Question {
@@ -30,3 +31,4 @@ class Question {
         }
     }
 }
+ */

@@ -35,7 +35,7 @@ class QuizzesService {
                     completion(nil)
                 }
             }
-            print("pokrecem dataTask...")
+            print("pokrecem dataTask quizzes service...")
             dataTask.resume()
         } else {
             completion(nil)

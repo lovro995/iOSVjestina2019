@@ -73,7 +73,7 @@ class QuizScreenViewController: UIViewController {
         
         var scrollWidth : CGFloat = 0
         
-        selectedQuiz?.questions.forEach({ (question) in
+        selectedQuiz?.questions!.forEach({ (question) in
            
             if let customView = Bundle.main.loadNibNamed("QuestionView", owner: nil, options: [:])?.first as? QuestionView {
                 
@@ -85,14 +85,14 @@ class QuizScreenViewController: UIViewController {
                 
                 scrollWidth += customView.frame.size.width
                 
-                customView.questionTitleLabel.text = question.question
+                customView.questionTitleLabel.text = (question as! Question).question
             
-                customView.Answer0Btn.setTitle(question.answers[0], for: .normal)
-                customView.Answer1Btn.setTitle(question.answers[1], for: .normal)
-                customView.answer2Btn.setTitle(question.answers[2], for: .normal)
-                customView.answer3Btn.setTitle(question.answers[3], for: .normal)
+                customView.Answer0Btn.setTitle((question as! Question).answers![0], for: .normal)
+                customView.Answer1Btn.setTitle((question as! Question).answers![1], for: .normal)
+                customView.answer2Btn.setTitle((question as! Question).answers![2], for: .normal)
+                customView.answer3Btn.setTitle((question as! Question).answers![3], for: .normal)
             
-                customView.correctAnswer = question.correct_answer
+                customView.correctAnswer = Int((question as! Question).correct_answer)
             }
         })
         
@@ -115,7 +115,7 @@ extension QuizScreenViewController : QuestionViewDelegate{
         nextX = currentScrollViewPostion.x + nextX*/
         
         var nextX = questionsScrollView.contentSize.width // width of scroll view
-        nextX /= CGFloat(selectedQuiz!.questions.count) // size of 1 question view
+        nextX /= CGFloat(selectedQuiz!.questions!.count) // size of 1 question view
         
         nextX *= CGFloat(answersList.count)
         
@@ -134,7 +134,7 @@ extension QuizScreenViewController : QuestionViewDelegate{
             let passedTime = Date().timeIntervalSince(startTime!)
             
             let quizResultService = SaveQuizService()
-            quizResultService.saveQuizResult(quizId : selectedQuiz!.id, correctAnswersNum: calcCorrectAnswersNum(), time: Double(passedTime)) { (serverResponse) in
+            quizResultService.saveQuizResult(quizId : Int(selectedQuiz!.id), correctAnswersNum: calcCorrectAnswersNum(), time: Double(passedTime)) { (serverResponse) in
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.navigationController?.popViewController(animated: true)

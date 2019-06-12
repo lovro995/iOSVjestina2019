@@ -22,11 +22,11 @@ class QuizzesListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let logoutBtn: UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: (#selector(QuizzesListViewController.logoutUser)))
+        /*let logoutBtn: UIBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: (#selector(QuizzesListViewController.logoutUser)))
         
         logoutBtn.tintColor = UIColor.red
         
-        self.navigationItem.setRightBarButton(logoutBtn, animated: true)
+        self.navigationItem.setRightBarButton(logoutBtn, animated: true) */
         
         self.quizzesTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         
@@ -48,6 +48,7 @@ class QuizzesListViewController: UIViewController {
         let userDefaults = UserDefaults.standard
         userDefaults.set(nil, forKey: "user_id")
         userDefaults.set(nil, forKey: "token")
+        userDefaults.set(nil, forKey: "username")
     }
     
     func grabQuizzes(){

@@ -11,7 +11,6 @@ import Foundation
 
 class LoginViewController: UIViewController {
     
-    
     @IBOutlet weak var cantLoginLabel: UILabel!
     @IBOutlet weak var loginBackgroundView: UIView!
     
@@ -32,7 +31,7 @@ class LoginViewController: UIViewController {
              DispatchQueue.main.async {
                 if let userData = userData{
                     
-                    self.saveUserData(userData : userData)
+                    self.saveUserData(userData : userData, userName : self.userNameTextField.text!)
                     
                     let vc = TabBarViewController()
                     
@@ -47,10 +46,11 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    func saveUserData(userData : UserData){
+    func saveUserData(userData : UserData, userName : String){
         let userDefaults = UserDefaults.standard
         userDefaults.set(userData.user_id, forKey: "user_id")
         userDefaults.set(userData.token, forKey: "token")
+        userDefaults.set(userName, forKey: "username")
         
         print("user_id")
         print(userData.user_id)

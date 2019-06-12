@@ -10,10 +10,30 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var userNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let userDefaults = UserDefaults.standard
+        let userName = userDefaults.string(forKey: "username")
+        userNameLabel.text = userName
+        
+    }
+    
+    @IBAction func LogoutUser(_ sender: Any) {
+        deleteUserData()
+        
+        let vc = LoginViewController()
+        //self.dismiss(animated: true, completion: nil)
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func deleteUserData(){
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(nil, forKey: "user_id")
+        userDefaults.set(nil, forKey: "token")
+        userDefaults.set(nil, forKey: "username")
     }
 
 

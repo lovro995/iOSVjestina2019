@@ -44,6 +44,7 @@ class InitialViewController: UIViewController {
         let userDefaults = UserDefaults.standard
         userDefaults.set(nil, forKey: "user_id")
         userDefaults.set(nil, forKey: "token")
+        userDefaults.set(nil, forKey: "username")
     }
     
     func grabQuizzes(){

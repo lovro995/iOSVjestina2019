@@ -17,7 +17,8 @@ class TabBarViewController: UITabBarController {
         vc1.pushViewController(QuizzesListViewController(), animated: false)
         vc1.tabBarItem = UITabBarItem(title: "Quizzes", image: nil, tag: 0)
         
-        let vc2 = SearchViewController()
+        let vc2 = UINavigationController()
+        vc2.pushViewController(SearchViewController(), animated: false)
         vc2.tabBarItem = UITabBarItem(title: "Search", image: nil, tag: 0)
         
         let vc3 = SettingsViewController()

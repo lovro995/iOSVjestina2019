@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="QuizApp" customModuleProvider="target">
             <connections>
+                <outlet property="searchTextField" destination="ZcA-Fd-dSD" id="g41-H2-0Je"/>
+                <outlet property="searchedQuizzesTableView" destination="Uyd-qT-zx1" id="QmP-d7-vRt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,8 +21,40 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWQ-pN-ts0">
+                    <rect key="frame" x="162" y="88" width="48" height="30"/>
+                    <state key="normal" title="Search"/>
+                    <connections>
+                        <action selector="searchAction:" destination="-1" eventType="touchUpInside" id="0sY-ZZ-EEZ"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcA-Fd-dSD">
+                    <rect key="frame" x="62" y="50" width="251" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uyd-qT-zx1">
+                    <rect key="frame" x="0.0" y="126" width="375" height="521"/>
+                    <color key="backgroundColor" red="0.82372492549999998" green="0.9446098208" blue="0.99916988610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.82372492549999998" green="0.9446098208" blue="0.99916988610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ZcA-Fd-dSD" firstAttribute="leading" secondItem="PWQ-pN-ts0" secondAttribute="trailing" constant="-148" id="3Ys-bA-Kga"/>
+                <constraint firstItem="Uyd-qT-zx1" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="43" id="4ry-7O-sPT"/>
+                <constraint firstItem="Uyd-qT-zx1" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="8WT-n7-0Ls"/>
+                <constraint firstItem="ZcA-Fd-dSD" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" constant="-124" id="Bdq-F4-OND"/>
+                <constraint firstItem="ZcA-Fd-dSD" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Gyq-v3-QKB"/>
+                <constraint firstItem="Uyd-qT-zx1" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="375:667" id="GzM-FP-Zhm"/>
+                <constraint firstItem="ZcA-Fd-dSD" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="KuJ-ZL-L2y"/>
+                <constraint firstItem="PWQ-pN-ts0" firstAttribute="top" secondItem="ZcA-Fd-dSD" secondAttribute="bottom" constant="8" id="N2o-CS-FD3"/>
+                <constraint firstItem="Uyd-qT-zx1" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="gWq-n7-Fek"/>
+                <constraint firstItem="Uyd-qT-zx1" firstAttribute="top" secondItem="PWQ-pN-ts0" secondAttribute="bottom" constant="8" id="uvr-wu-3Ws"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="138.40000000000001" y="132.68365817091455"/>
         </view>
     </objects>
 </document>

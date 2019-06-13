@@ -34,6 +34,16 @@ class DataController{
         return quizzes
     }
     
+    func fetchQuizzesMatchFilter(filter : String) -> [Quiz]?{
+        let request: NSFetchRequest<Quiz> = Quiz.fetchRequest()
+        request.predicate = NSPredicate(format: "title CONTAINS[c] %@ OR desc CONTAINS[c] %@", filter, filter)
+        
+        let context = DataController.shared.persistentContainer.viewContext
+        
+        let quizzes = try? context.fetch(request)
+        return quizzes
+    }
+    
     
     func saveContext () {
         

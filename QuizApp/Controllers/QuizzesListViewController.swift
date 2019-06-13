@@ -136,7 +136,6 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
         }else {
            updateGUI()
             cell.quizImageView.contentMode = UIView.ContentMode.scaleAspectFit
-            
         }
        
         switch quiz.level {

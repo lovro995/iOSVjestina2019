@@ -56,10 +56,12 @@ class QuizzesListViewController: UIViewController {
         self.fetchingQuizzesLabel.isHidden = false
         self.quizzesTableView.isHidden = true
         
-        let quizzesService = QuizzesService()
-        
-        quizzesService.fetchQuizzes() { (quizzes) in
+         if(ConnectionManager.instance.isConnectedToInternet()){
+            print("Connected to internet.")
+            let quizzesService = QuizzesService()
             
+            quizzesService.fetchQuizzes() { (quizzes) in
+                
                 if let quizzes = quizzes {
                     print("quizzes successfully fetched.")
                     quizzes.quizzes.forEach({ (quiz) in
@@ -71,8 +73,22 @@ class QuizzesListViewController: UIViewController {
                     }
                     
                 }else {
-                    //
+                    // 
                 }
+                
+            }
+        } else{
+             print("No internet connection, fetching from database.")
+            
+            let quizzes = DataController.shared.fetchAllQuizzes()
+            
+            quizzes?.forEach({ (quiz) in
+                self.quizzesList.append(quiz)
+            })
+            
+            DispatchQueue.main.async {
+                self.quizzesTableView.reloadData()
+            }
             
         }
         
@@ -102,20 +118,23 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
         
         cell.quizTitleView.text = quiz.title
         cell.quizDescriptionView.text = quiz.desc
-       
-        let categoryImageService = CategoryImageService()
-        categoryImageService.fetchCategoryImage(categoryImageString : quiz.imageString!) { (image) in
-            DispatchQueue.main.async {
-                cell.quizImageView.image = image
-                
-                if(indexPath.section == 1 && ((indexPath.row + 1) == (self.filterQuizzesList(category:Category.science).count ))){
-                    self.quizzesTableView.isHidden = false
-                    self.fetchingQuizzesLabel.isHidden = true
-                    self.loadingBar.isHidden = true
+        
+        if(ConnectionManager.instance.isConnectedToInternet()){
+            let categoryImageService = CategoryImageService()
+            categoryImageService.fetchCategoryImage(categoryImageString : quiz.imageString!) { (image) in
+                DispatchQueue.main.async {
+                    cell.quizImageView.image = image
+                    
+                    if(indexPath.section == 1 && ((indexPath.row + 1) == (self.filterQuizzesList(category:Category.science).count ))){
+                        print("will show all quizzes - all images fetched")
+                        self.updateGUI()
+                    }
                 }
             }
+        }else {
+           updateGUI()
         }
-        
+       
         switch quiz.level {
         case 1:
             cell.levelView1.backgroundColor = UIColor.green
@@ -134,6 +153,12 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
         }
         
         return cell
+    }
+    
+    func updateGUI(){
+        self.quizzesTableView.isHidden = false
+        self.fetchingQuizzesLabel.isHidden = true
+        self.loadingBar.isHidden = true
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -19,9 +19,9 @@ class Quizzes {
             let quizzesJSON = jsonDict["quizzes"] as? [Any] { // za kljuc "borders" dohvatimo
          
             for current in quizzesJSON{
-                print("za svaki quiz")
+               // print("za svaki quiz")
                 let quiz = Quiz.createFrom(json: current as! [String : Any])
-                print("append")
+                //print("append")
                 self.quizzes.append(quiz!)
             }
             

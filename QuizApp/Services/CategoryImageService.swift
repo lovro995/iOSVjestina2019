@@ -19,28 +19,23 @@ class CategoryImageService {
         if let url = URL(string: urlString) {
             
             // URLRequest objekt stvaramo iz URL objekta
+           
             let request = URLRequest(url: url)
             
-            // Ovdje stvaramo jedan dataTast objekt, metodom 'dataTask'
-            // ta metoda prima URLRequest i funkciju koja prima (Data?, URLResponse?, Error?)
-            // pozivom metode 'dataTask.resume()' pokrecemo izvrsavanje URLRequesta predanog dataTask-u, odnosno dohvacanje sadrzaja sa URL-a u URLRequestu
-            // Nakon sto se sadrzaj dohvati sa URL-a, izvrsava se blok koda u kojem:
-            // - data - dohvaceny byteovi, sadrzaj koji smo dohvatili, u ovom slucaju slika
-            // - response - odgovor od servera, tu pisu header-i, status kod i sl
-            // - error - pogreska, ako je doslo do greske pri dohvatu
             let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 print("fetched image")
                 if let data = data {
                     let image = UIImage(data: data)
+                    
                     completion(image)
-                    print("completion called")
+                   // print("completion called for image fetch")
                 } else {
                     completion(nil)
                 }
             }
             // kraj stvaranja dataTask-a
             
-            print("resuming data task")
+            print("resuming data task fetch category image")
             // Pokretanje dataTask-a, dohvacanje URL-a
             dataTask.resume()
         } else {

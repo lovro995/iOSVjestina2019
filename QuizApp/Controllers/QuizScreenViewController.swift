@@ -21,26 +21,38 @@ class QuizScreenViewController: UIViewController {
     
     @IBOutlet weak var leaderboardBtn: UIButton!
     @IBOutlet weak var startQuizBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let categoryImageService = CategoryImageService()
-        categoryImageService.fetchCategoryImage(categoryImageString : selectedQuiz!.imageString!) { (image) in
-            DispatchQueue.main.async {
-                self.selectedQuizImageView.image = image
-                
-                self.questionsScrollView.isScrollEnabled = false
-                self.selectedQuizTitle.text = self.selectedQuiz?.title
-                
-                self.selectedQuizTitle.isHidden = false
-                self.selectedQuizImageView.isHidden = false
-                self.startQuizBtn.isHidden = false
-                self.leaderboardBtn.isHidden = false
-                
-                self.beginStartQuizBtnAnimation()
-            }
-        }
         
+        if(ConnectionManager.instance.isConnectedToInternet()){
+            let categoryImageService = CategoryImageService()
+            
+            categoryImageService.fetchCategoryImage(categoryImageString : selectedQuiz!.imageString!) { (image) in
+                DispatchQueue.main.async {
+                   
+                    self.selectedQuizImageView.image = image
+                    self.updateGUI()
+                }
+            }
+            
+        }else{
+           updateGUI()
+        }
+
+        
+    }
+    
+    func updateGUI(){
+        self.questionsScrollView.isScrollEnabled = false
+        self.selectedQuizTitle.text = self.selectedQuiz?.title
+        
+        self.selectedQuizTitle.isHidden = false
+        self.selectedQuizImageView.isHidden = false
+        self.startQuizBtn.isHidden = false
+        self.leaderboardBtn.isHidden = false
+        
+        self.beginStartQuizBtnAnimation()
     }
     
     func beginStartQuizBtnAnimation() {
@@ -68,6 +80,7 @@ class QuizScreenViewController: UIViewController {
         startQuizBtn.isEnabled = false
         startTime = Date()
     }
+    
     
     func manageQuestionsViewsToScrollView(){
         

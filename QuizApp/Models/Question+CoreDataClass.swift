@@ -22,10 +22,10 @@ public class Question: NSManagedObject {
         do {
             let questions = try context.fetch(request)
             if let question = questions.first {
-                print("question postoji")
+               // print("question postoji")
                 return question
             } else {
-                print("novi question")
+              //  print("novi question")
                 let newQuestion = Question(context: context)
                 return newQuestion
             }

@@ -32,12 +32,14 @@ class QuizScreenViewController: UIViewController {
                 DispatchQueue.main.async {
                    
                     self.selectedQuizImageView.image = image
+                    self.selectedQuizImageView.contentMode = UIView.ContentMode.scaleToFill
                     self.updateGUI()
                 }
             }
             
         }else{
-           updateGUI()
+            self.selectedQuizImageView.contentMode = UIView.ContentMode.scaleAspectFit
+            updateGUI()
         }
 
         

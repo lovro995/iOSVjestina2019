@@ -124,6 +124,8 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
             categoryImageService.fetchCategoryImage(categoryImageString : quiz.imageString!) { (image) in
                 DispatchQueue.main.async {
                     cell.quizImageView.image = image
+                    cell.quizImageView.contentMode = UIView.ContentMode.scaleToFill
+                    
                     
                     if(indexPath.section == 1 && ((indexPath.row + 1) == (self.filterQuizzesList(category:Category.science).count ))){
                         print("will show all quizzes - all images fetched")
@@ -133,6 +135,8 @@ extension QuizzesListViewController : UITableViewDelegate, UITableViewDataSource
             }
         }else {
            updateGUI()
+            cell.quizImageView.contentMode = UIView.ContentMode.scaleAspectFit
+            
         }
        
         switch quiz.level {
